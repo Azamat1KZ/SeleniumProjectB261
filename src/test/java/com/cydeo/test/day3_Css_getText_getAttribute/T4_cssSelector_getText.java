@@ -1,4 +1,4 @@
-package com.cydeo.test;
+package com.cydeo.test.day3_Css_getText_getAttribute;
 
 import com.cydeo.test.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
