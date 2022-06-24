@@ -6,6 +6,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class T1_JavaFaker_Registration_Form {
@@ -36,6 +37,7 @@ public class T1_JavaFaker_Registration_Form {
         phoneNumber.sendKeys(faker.numerify("571-###-####"));
 //    9. Select a gender from radio buttons
         WebElement gender = Driver.getDriver().findElement(By.xpath("//input[@value='female']"));
+        gender.click();
 //    10.Enter date of birth
         WebElement DOB = Driver.getDriver().findElement(By.name("birthday"));
         DOB.sendKeys("12/12/1912");
@@ -50,8 +52,15 @@ public class T1_JavaFaker_Registration_Form {
         WebElement lang = Driver.getDriver().findElement(By.id("inlineCheckbox2"));
         lang.click();
 //    14.Click to sign up button
+        WebElement submitBtn = Driver.getDriver().findElement(By.id("wooden_spoon"));
+        submitBtn.click();
 //    15.Verify success message “You’ve successfully completed registration.” is
 //    displayed.
+        WebElement resultMessage = Driver.getDriver().findElement(By.xpath("//*[@id=\"content\"]/div/div/p"));
+        String expectedResult = "You've successfully completed registration!";
+        String actualResul = resultMessage.getText();
+        Assert.assertEquals(actualResul, expectedResult);
+
 
 
     }
